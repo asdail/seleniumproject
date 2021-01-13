@@ -20,6 +20,16 @@ class main_page:
     def user(self):
         return self.driver.find_element_by_id("menuUserSVGPath").click()
 
+    def user_my_account(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_account]").click()
+
+
+    def user_my_orders(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_Orders]").click()
+
+    def user_sigh_out(self):
+        return self.driver.find_element_by_css_selector("label[translate=Sign_out]").click()
+
     def cart(self):
         return self.driver.find_element_by_id("menuCart").click()
 
