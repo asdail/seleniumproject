@@ -15,6 +15,9 @@ class Cart_pop_up:
         return self.driver.find_element_by_css_selector("tfoot > tr > td > span > label").text()
 
     # edit path
+    def cart(self):
+        return self.driver.find_element_by_id('menuCart').click()
+
     def total_for_payment(self):
         return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
 
