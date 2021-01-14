@@ -15,7 +15,10 @@ class AOSProject(unittest.TestCase):
         self.driver.maximize_window()
 
         self.main_page = main_page(self.driver)
-        self.
+        self.cart = Car
+
+    def tearDown(self):
+        self.driver.close()
 
     def exercise_1(self):
         main_page.tablets()
