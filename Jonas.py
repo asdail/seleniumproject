@@ -21,9 +21,9 @@ class AOS (unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path='C:\Selenium\chromedriver.exe')
         self.body = self.driver.find_element_by_xpath("/html/body")
-        self.wait = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
         self.driver.implicitly_wait(10)
         self.driver.get('https://advantageonlineshopping.com/#/')
+        self.driver.maximize_window()
         print('setUp')
 
     def tearDown(self):
@@ -35,6 +35,7 @@ class AOS (unittest.TestCase):
         self.driver = Locators(self.driver)
         self.driver.mainpage_tablets()
         time.sleep(5.0)
+        self.driver.tablets_home().send_keys(Keys.PAGE_DOWN)
         self.driver.tablets_hp_elitepad()
         self.driver.elitepad_add_to_cart()
         self.driver.elitepad_tablets()
