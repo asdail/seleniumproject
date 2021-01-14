@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
 
 
-class Cart_pop_up:
+class All_pages:
     def __init__(self,driver):
         self.driver = driver
 
@@ -32,30 +32,31 @@ class Cart_pop_up:
         return self.driver.find_element_by_css_selector("div[class=logo]").click()
 
     def cart_hovering(self):
-        self.element_to_hover_over = self.driver.find_element_by_id("menuCart")
-        hover = ActionChains(self.driver).move_to_element("element_to_hover_over")
+        element_to_hover_over = self.driver.find_element_by_id("menuCart")
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
         return hover.perform()
 
     def total_for_payment(self):
-        return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
+        return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text
 
     def name_of_the_item(self,number_of_item_in_table):
-        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/h3").text()
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/h3").text
 
     def color_of_the_item(self,number_of_item_in_table):
-        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label/span").text()
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label/span").text
 
     def qty_per_item(self,number_of_item_in_table):
-        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label").text()
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label").text
 
     def price_per_item(self,number_of_item_in_table):
-        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/p").text()
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/p").text
 
     def remove_item_from_cart(self,number_of_item_in_table):
         return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/div").click()
 
     def total_items_in_cart(self):
-        return self.driver.find_element_by_xpath("//*[@id='toolTipCart']/div/table/tfoot/tr[1]/td[2]/span").text()
+        text = self.driver.find_element_by_xpath('/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart/div/table/tfoot/tr[1]/td[1]/span/label').text
+        return text
 
     def checkout(self):
         return self.driver.find_element_by_id("checkOutPopUp").click()

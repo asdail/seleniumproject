@@ -134,28 +134,53 @@ class Locators:
 
     #Cart Pop-Up
 
-    def popup_total_items_in_cart(self):
-        return self.driver.find_element_by_css_selector("tfoot > tr > td > span > label").text()
+    def user(self):
+        return self.driver.find_element_by_id("menuUserSVGPath").click()
 
-    def popup_total_for_payment(self):
-        return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
+    def user_my_account(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_account]").click()
 
-    def popup_name_of_the_item(self):
-        return self.driver.find_element_by_id("speakersImg").text()
+    def user_my_orders(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_Orders]").click()
 
-    def popup_color_of_the_item(self):
-        return self.driver.find_element_by_css_selector("a > label > span[class=ng-binding]").text()
+    def user_sigh_out(self):
+        return self.driver.find_element_by_css_selector("label[translate=Sign_out]").click()
 
-    def popup_qty_per_item(self):
-        return self.driver.find_element_by_xpath("//tr[@id='product']/td[2]/a/label[1]").text()
+    def cart(self):
+        return self.driver.find_element_by_id("menuCart").click()
 
-    def popup_price_per_item(self):
-        return self.driver.find_element_by_xpath("//tr[@id='product']/td/p").text()
+    def back_to_main(self):
+        return self.driver.find_element_by_css_selector("div[class=logo]").click()
 
-    def popup_remove_item_from_cart(self):
-        return self.driver.find_element_by_xpath("//tr[@id='product']/td/div/div").click()
+    def cart_hovering(self):
+        element_to_hover_over = self.driver.find_element_by_id("menuCart")
+        hover = ActionChains(self.driver).move_to_element(element_to_hover_over)
+        return hover.perform()
 
-    def popup_checkout(self):
+    def total_for_payment(self):
+        return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text
+
+    def name_of_the_item(self, number_of_item_in_table):
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/h3").text
+
+    def color_of_the_item(self, number_of_item_in_table):
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label/span").text
+
+    def qty_per_item(self, number_of_item_in_table):
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[2]/a/label").text
+
+    def price_per_item(self, number_of_item_in_table):
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/p").text
+
+    def remove_item_from_cart(self, number_of_item_in_table):
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/div").click()
+
+    def total_items_in_cart(self):
+        text = self.driver.find_element_by_xpath(
+            '/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart/div/table/tfoot/tr[1]/td[1]/span/label').text
+        return text
+
+    def checkout(self):
         return self.driver.find_element_by_id("checkOutPopUp").click()
 
     #Cart
