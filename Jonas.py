@@ -7,7 +7,7 @@ from CheckOut import Checkout
 from HP_ElitePad import HP_elitepad
 from HP_PRO import HP_pro
 from HP_ELITE_X2 import HP_elite_x2
-from Cart import
+from Cart import Cart
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support.select import Select
