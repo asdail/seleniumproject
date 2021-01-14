@@ -14,8 +14,11 @@ class AOSProject(unittest.TestCase):
         self.driver.get("https://www.advantageonlineshopping.com/#/")
         self.driver.maximize_window()
 
+        self.main_page = main_page(self.driver)
+        self.
+
     def exercise_1(self):
-        self.driver = main_page.tablets()
+        main_page.tablets()
         Tablets.hp_eletepad()
         hp_ElitePad.color_black()
         hp_ElitePad.quantity("2")
@@ -53,7 +56,10 @@ class AOSProject(unittest.TestCase):
 
         main_page.tablets()
         Tablets.hp_elite()
-        hp
+        hp_ElitePad.color_black()
+        hp_ElitePad.quantity("1")
+        hp_ElitePad.add_to_cart()
+
 
 
 

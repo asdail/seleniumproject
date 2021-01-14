@@ -19,7 +19,7 @@ class Cart_pop_up:
         return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
 
     def name_of_the_item(self):
-        return self.driver.find_element_by_id("speakersImg").click()
+        return self.driver.find_element_by_id("speakersImg").text()
 
     def color_of_the_item(self):
         return self.driver.find_element_by_css_selector("a > label > span[class=ng-binding]").text()
@@ -31,15 +31,10 @@ class Cart_pop_up:
         return self.driver.find_element_by_xpath("//tr[@id='product']/td/p").text()
 
     def remove_item_from_cart(self):
-        return self.driver.find_element_by_xpath("//tr[@id='product']/td/div/div").text()
+        return self.driver.find_element_by_xpath("//tr[@id='product']/td/div/div").click()
 
     def checkout(self):
         return self.driver.find_element_by_id("checkOutPopUp").click()
-
-    def navigation_line(self):
-        return self.driver.find_element_by_xpath("//div/section/article/nav/a[2]").text()
-
-
 
 
 
