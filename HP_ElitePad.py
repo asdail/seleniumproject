@@ -5,7 +5,7 @@ class hp_ElitePad:
 
 #Check that you are in the right place = order payment
     def navigation_line(self):
-        return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
+        return self.driver.find_element_by_xpath("//div/nav/a[3]").text
 
     def cart(self):
         return self.driver.find_element_by_id('menuCart')
@@ -14,10 +14,10 @@ class hp_ElitePad:
         return self.driver.find_element_by_link_text('TABLETS').click()
 
     def price(self):
-        return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text()
+        return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text
 
-    def color_black(self):
-        return self.driver.find_element_by_css_selector("span[title=BLACK]").click()
+    def color_blue(self):
+        return self.driver.find_element_by_css_selector("span[title=BLUE]").click()
 
     def color_gray(self):
         return self.driver.find_element_by_css_selector("span[title=GRAY]").click()
