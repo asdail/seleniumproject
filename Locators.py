@@ -179,7 +179,7 @@ class Locators:
 
     def cart_qty_per_item(self, index):
         xpath = f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[5]/label[2]"
-        return self.driver.find_element_by_xpath(xpath).text()
+        return self.driver.find_element_by_xpath(xpath).text
 
     def cart_price_per_item(self, index):
         xpath = f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/p"
