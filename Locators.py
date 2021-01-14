@@ -1,0 +1,247 @@
+class Locators:
+    def __init__(self, driver):
+        self.driver = driver
+
+    #Main Page
+    def mainpage_user(self):
+        return self.driver.find_element_by_id("menuUserSVGPath").click()
+
+    def mainpage_user_my_account(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_account]").click()
+
+    def mainpage_user_my_orders(self):
+        return self.driver.find_element_by_css_selector("label[translate=My_Orders]").click()
+
+    def mainpage_user_sigh_out(self):
+        return self.driver.find_element_by_css_selector("label[translate=Sign_out]").click()
+
+    def mainpage_cart(self):
+        return self.driver.find_element_by_id("menuCart").click()
+
+    def mainpage_back_to_main(self):
+        return self.driver.find_element_by_css_selector("div[class=logo]").click()
+
+    def mainpage_speakers(self):
+        return self.driver.find_element_by_id("speakersImg").click()
+
+    def mainpage_tablets(self):
+        return self.driver.find_element_by_id("tabletsImg").click()
+
+    def mainpage_laptops(self):
+        return self.driver.find_element_by_id("laptopsImg").click()
+
+    def mainpage_mice(self):
+        return self.driver.find_element_by_id("miceImg").click()
+
+    def mainpage_headphones(self):
+        return self.driver.find_element_by_id("headphonesImg").click()
+
+    def mainpage_special_offer(self):
+        return self.driver.find_element_by_id("see_offer_btn").click()
+
+    def mainpage_chat_with_us(self):
+        return self.driver.find_element_by_id("chatLogo").click()
+
+    def mainpage_facebook(self):
+        return self.driver.find_element_by_css_selector("img[name=follow_facebook]").click()
+
+    def mainpage_twitter(self):
+        return self.driver.find_element_by_css_selector("img[name=follow_twitter]").click()
+
+    def mainpage_linkedin(self):
+        return self.driver.find_element_by_css_selector("img[name=follow_linkedin]").click()
+
+    #Tablets
+
+    def tablets_home(self):
+            return self.driver.find_element_by_link_text('HOME')
+
+    def tablets_hp_elitepad(self):
+        return self.driver.find_element_by_id("16").click()
+
+    def tablets_hp_elite(self):
+        return self.driver.find_element_by_id('17').click()
+
+    def tablets_hp_pro(self):
+        return self.driver.find_element_by_id('18').click()
+
+    #HP ElitePad
+
+    def elitepad_navigation_line(self):
+        return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
+
+    def elitepad_cart(self):
+        return self.driver.find_element_by_id('menuCart')
+
+    def elitepad_tablets(self):
+        return self.driver.find_element_by_link_text('TABLETS').click()
+
+    def elitepad_price(self):
+        return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text()
+
+    def elitepad_color_black(self):
+        return self.driver.find_element_by_css_selector("span[title=BLACK]").click()
+
+    def elitepad_color_gray(self):
+        return self.driver.find_element_by_css_selector("span[title=GRAY]").click()
+
+    def elitepad_quantity(self,text):
+        self.driver.find_element_by_css_selector("input[name=quantity]").click()
+        self.driver.find_element_by_css_selector("input[name=quantity]").send_keys(text)
+
+    def elitepad_add_to_cart(self):
+        self.driver.find_element_by_css_selector("button[name=save_to_cart]").click()
+
+    #HP Elite
+
+    def elite_navigation_line(self):
+        return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
+
+    def elite_price(self):
+        return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text()
+
+    def elite_color_black(self):
+        return self.driver.find_element_by_css_selector("span[title=BLACK]").click()
+
+    def elite_color_gray(self):
+        return self.driver.find_element_by_css_selector("span[title=GRAY]").click()
+
+    def elite_quantity(self,text):
+        self.driver.find_element_by_css_selector("input[name=quantity]").click()
+        self.driver.find_element_by_css_selector("input[name=quantity]").send_keys(text)
+
+    def elite_add_to_cart(self):
+        self.driver.find_element_by_css_selector("button[name=save_to_cart]").click()
+
+    #HP Pro
+
+    def pro_navigation_line(self):
+        return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
+
+    def pro_price(self):
+        return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text()
+
+    def pro_color_black(self):
+        return self.driver.find_element_by_css_selector("span[title=BLACK]").click()
+
+    def pro_color_gray(self):
+        return self.driver.find_element_by_css_selector("span[title=GRAY]").click()
+
+    def pro_quantity(self,text):
+        self.driver.find_element_by_css_selector("input[name=quantity]").click()
+        self.driver.find_element_by_css_selector("input[name=quantity]").send_keys(text)
+
+    def pro_add_to_cart(self):
+        self.driver.find_element_by_css_selector("button[name=save_to_cart]").click()
+
+    #Cart Pop-Up
+
+    def popup_total_items_in_cart(self):
+        return self.driver.find_element_by_css_selector("tfoot > tr > td > span > label").text()
+
+    def popup_cart(self):
+        return self.driver.find_element_by_id('menuCart').click()
+
+    def popup_total_for_payment(self):
+        return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
+
+    def popup_name_of_the_item(self):
+        return self.driver.find_element_by_id("speakersImg").text()
+
+    def popup_color_of_the_item(self):
+        return self.driver.find_element_by_css_selector("a > label > span[class=ng-binding]").text()
+
+    def popup_qty_per_item(self):
+        return self.driver.find_element_by_xpath("//tr[@id='product']/td[2]/a/label[1]").text()
+
+    def popup_price_per_item(self):
+        return self.driver.find_element_by_xpath("//tr[@id='product']/td/p").text()
+
+    def popup_remove_item_from_cart(self):
+        return self.driver.find_element_by_xpath("//tr[@id='product']/td/div/div").click()
+
+    def popup_checkout(self):
+        return self.driver.find_element_by_id("checkOutPopUp").click()
+
+    #Cart
+
+    def cart_navigation_line(self):
+        return self.driver.find_element_by_xpath("//div/section/article/nav/a[2]").text()
+
+    def cart_total_items_in_cart(self):
+        return self.driver.find_element_by_css_selector("//div/section/article/h3/span").text()
+
+    def cart_total_for_payment(self):
+        return self.driver.find_element_by_xpath("//div[@id='shoppingCart']/table/tfoot/tr/td/span[2]").text()
+
+    def cart_name_of_the_item(self, index):
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[2]").text()
+
+    def cart_color_of_the_item(self, index):
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[4]").text()
+
+    def cart_qty_per_item(self, index):
+        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[5]/label[2]').text()
+
+    def cart_price_per_item(self, index):
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/p").text()
+
+    def cart_remove_item_from_cart(self, index):
+        return self.driver.find_element_by_xpath(f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[3]").click()
+
+    def cart_edit_cart(self, index):
+        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[1]').click()
+
+    def cart_checkout(self):
+        return self.driver.find_element_by_id("checkOutButton").click()
+
+    #Checkout
+
+    def checkout_navigation_line(self):
+        return self.driver.find_element_by_css_selector("a[translate = ORDER_PAYMENT]").text()
+
+    def checkout_edit_shipping_details(self):
+        return self.driver.find_element_by_css_selector("a[translate = Edit_shipping_Details]").click
+
+    def checkout_next_page(self):
+        return self.driver.find_element_by_css_selector("button[id=next_btn]").click
+
+    def checkout_payment_method_safepay(self):
+        return self.driver.find_element_by_css_selector("img[alt=Safepay]").click
+
+    def checkout_safepay_username(self, text):
+        self.driver.find_element_by_css_selector("input[name=safepay_username]").click
+        self.driver.find_element_by_css_selector("input[name=safepay_username]").send_keys(text)
+
+    def checkout_safepay_password(self, text):
+        self.driver.find_element_by_css_selector("input[name=safepay_password]").click
+        self.driver.find_element_by_css_selector("input[name=safepay_password]").send_keys(text)
+
+    def checkout_pay_now(self, text):
+        return self.driver.find_element_by_id("pay_now_btn_SAFEPAY").click()
+
+    def checkout_order_succeed(self):
+        return self.driver.find_element_by_css_selector("span[translate=Thank_you_for_buying_with_Advantage]").text()
+
+    def checkout_checkout(self):
+        return self.driver.find_element_by_id("checkOutPopUp").click()
+
+    #My Orders
+
+    def myorders_navigation_line(self):
+        return self.driver.find_element_by_css_selector("a[translate = MY_ORDERS]").text()
+
+
+    def myorders_order_number(self):
+        return self.driver.find_element_by_xpath("//div[@id=myAccountContainer]/div/div/div[2]/div[1]/div[1]/label").text()
+
+    def myorders_order_date(self):
+        return self.driver.find_element_by_xpath("//div[@id=myAccountContainer]/div/div/div[2]/div[1]/div[2]/label").text()
+
+    def myorders_total_price(self):
+        return self.driver.find_element_by_xpath("//div[@id=myAccountContainer]/div/div/div[2]/div[1]/div[3]/label").text()
+
+
+
+
+
