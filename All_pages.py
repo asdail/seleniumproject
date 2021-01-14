@@ -55,8 +55,7 @@ class All_pages:
         return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/div").click()
 
     def total_items_in_cart(self):
-        text = self.driver.find_element_by_xpath('/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart/div/table/tfoot/tr[1]/td[1]/span/label').text
-        return text
+        return self.driver.find_element_by_xpath('/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart/div/table/tfoot/tr[1]/td[1]/span/label').text
 
     def checkout(self):
         return self.driver.find_element_by_id("checkOutPopUp").click()

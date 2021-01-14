@@ -24,7 +24,7 @@ class AOSProject(unittest.TestCase):
         self.cart = Cart(self.driver)
         self.tablets = Tablets(self.driver)
         self.hp_elitepad = hp_ElitePad(self.driver)
-        self.cart_pop_up = Cart_pop_up(self.driver)
+        self.cart_pop_up = All_pages(self.driver)
         self.hp_pro = HP_pro(self.driver)
         self.hp_elite_x2 = HP_elite_x2(self.driver)
 
