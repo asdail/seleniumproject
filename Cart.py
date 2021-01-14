@@ -1,5 +1,5 @@
 
-class cart_pop_up:
+class Cart:
     def __init__(self,driver):
         self.driver = driver
 

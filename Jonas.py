@@ -7,6 +7,7 @@ from CheckOut import Checkout
 from HP_ElitePad import HP_elitepad
 from HP_PRO import HP_pro
 from HP_ELITE_X2 import HP_elite_x2
+from Cart import
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support.select import Select
@@ -36,4 +37,5 @@ class AOS (unittest.TestCase):
         self.driver = HP_elitepad(self.driver)
         self.driver.add_to_cart()
         self.driver = Cart_pop_up(self.driver)
-
+        self.driver.cart()
+        self.driver =
