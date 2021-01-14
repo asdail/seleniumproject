@@ -16,7 +16,7 @@ class hp_ElitePad:
     def price(self):
         return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text
 
-    def color_black(self):
+    def color_blue(self):
         return self.driver.find_element_by_css_selector("span[title=BLUE]").click()
 
     def color_gray(self):
