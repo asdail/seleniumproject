@@ -1,5 +1,5 @@
 
-class HP_elitepad:
+class hp_ElitePad:
     def __init__(self,driver):
         self.driver = driver
 
