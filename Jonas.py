@@ -38,4 +38,4 @@ class AOS (unittest.TestCase):
         self.driver.add_to_cart()
         self.driver = Cart_pop_up(self.driver)
         self.driver.cart()
-        self.driver =
+        self.driver = Cart()
