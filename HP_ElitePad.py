@@ -1,11 +1,14 @@
 
-class hp_elite_x2:
+class HP_elitepad:
     def __init__(self,driver):
         self.driver = driver
 
 #Check that you are in the right place = order payment
     def navigation_line(self):
         return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
+
+    def tablets(self):
+        return self.driver.find_element_by_link_text('TABLETS').click()
 
     def price(self):
         return self.driver.find_element_by_xpath("//section/article/div/div[2]/h2").text()

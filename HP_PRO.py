@@ -1,5 +1,5 @@
 
-class hp_pro:
+class HP_pro:
     def __init__(self,driver):
         self.driver = driver
 

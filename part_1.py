@@ -15,5 +15,5 @@ class AOSProject(unittest.TestCase):
         self.driver.maximize_window()
 
     def add_two_products(self):
-        main_page.tablets()
+        Main_page.tablets()
 
