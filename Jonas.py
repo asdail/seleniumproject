@@ -40,6 +40,17 @@ class AOS (unittest.TestCase):
         self.driver.elitepad_tablets()
         self.driver.tablets_hp_elite()
         self.driver.elite_add_to_cart()
+        self.driver.general_cart()
+        self.driver.cart_edit_cart('1')
+        self.driver.elite_quantity('2')
+        self.driver.elite_add_to_cart()
+        self.driver.general_cart()
+        self.driver.cart_edit_cart('2')
+        self.driver.elitepad_quantity('2')
+        self.driver.elitepad_add_to_cart()
+        self.driver.general_cart()
+        self.assertEqual(self.driver.cart_qty_per_item('1'), '2')
+        self.assertEqual(self.driver.cart_qty_per_item('2'), '2')
 
     def test_part_6(self):
         #self.driver = Main_page(self.driver)

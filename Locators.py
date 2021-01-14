@@ -2,6 +2,10 @@ class Locators:
     def __init__(self, driver):
         self.driver = driver
 
+    #General
+    def general_cart(self):
+        return self.driver.find_element_by_id('menuCart').click()
+
     #Main Page
     def mainpage_user(self):
         return self.driver.find_element_by_id("menuUserSVGPath").click()
@@ -14,9 +18,6 @@ class Locators:
 
     def mainpage_user_sigh_out(self):
         return self.driver.find_element_by_css_selector("label[translate=Sign_out]").click()
-
-    def mainpage_cart(self):
-        return self.driver.find_element_by_id("menuCart").click()
 
     def mainpage_back_to_main(self):
         return self.driver.find_element_by_css_selector("div[class=logo]").click()
@@ -69,9 +70,6 @@ class Locators:
 
     def elitepad_navigation_line(self):
         return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
-
-    def elitepad_cart(self):
-        return self.driver.find_element_by_id('menuCart')
 
     def elitepad_tablets(self):
         return self.driver.find_element_by_link_text('TABLETS').click()
@@ -139,9 +137,6 @@ class Locators:
     def popup_total_items_in_cart(self):
         return self.driver.find_element_by_css_selector("tfoot > tr > td > span > label").text()
 
-    def popup_cart(self):
-        return self.driver.find_element_by_id('menuCart').click()
-
     def popup_total_for_payment(self):
         return self.driver.find_element_by_xpath("//*[@id=toolTipCart]/div/table/tfoot/tr[1]/td[2]/span").text()
 
@@ -175,22 +170,28 @@ class Locators:
         return self.driver.find_element_by_xpath("//div[@id='shoppingCart']/table/tfoot/tr/td/span[2]").text()
 
     def cart_name_of_the_item(self, index):
-        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[2]").text()
+        xpath = f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[2]/label'
+        return self.driver.find_element_by_xpath(xpath).text()
 
     def cart_color_of_the_item(self, index):
-        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[4]").text()
+        xpath = f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[4]"
+        return self.driver.find_element_by_xpath(xpath).text()
 
     def cart_qty_per_item(self, index):
-        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[5]/label[2]').text()
+        xpath = f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[5]/label[2]"
+        return self.driver.find_element_by_xpath(xpath).text()
 
     def cart_price_per_item(self, index):
-        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/p").text()
+        xpath = f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/p"
+        return self.driver.find_element_by_xpath(xpath).text()
 
     def cart_remove_item_from_cart(self, index):
-        return self.driver.find_element_by_xpath(f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[3]").click()
+        xpath = f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[3]"
+        return self.driver.find_element_by_xpath(xpath).click()
 
     def cart_edit_cart(self, index):
-        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[1]').click()
+        xpath = f"/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[1]"
+        return self.driver.find_element_by_xpath(xpath).click()
 
     def cart_checkout(self):
         return self.driver.find_element_by_id("checkOutButton").click()
