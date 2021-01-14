@@ -7,6 +7,9 @@ class hp_ElitePad:
     def navigation_line(self):
         return self.driver.find_element_by_xpath("//div/nav/a[3]").text()
 
+    def cart(self):
+        return self.driver.find_element_by_id('menuCart')
+
     def tablets(self):
         return self.driver.find_element_by_link_text('TABLETS').click()
 
