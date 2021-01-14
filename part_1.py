@@ -47,19 +47,20 @@ class AOSProject(unittest.TestCase):
         self.Main_page.back_to_main()
         self.Main_page.cart()
         count = self.Cart_pop_up.total_items_in_cart()
-        if self.assertTrue(count,"7 Item" ) == True:
+        if self.assertTrue(count,"5 Item" ) == True:
             print("exercise_1 pass")
         else:
             print("exercise_1 fail")
 
     def exercise_2(self):
+# Add the HP_ElitePad tablet
         self.Main_page.tablets()
         self.Tablets.hp_eletepad()
-        self.hp_ElitePad.color_black()
-        self.hp_ElitePad.quantity("2")
-        self.hp_ElitePad.add_to_cart()
+        self.HP_ElitePad.color_black()
+        self.HP_ElitePad.quantity("2")
+        self.HP_ElitePad.add_to_cart()
         self.Main_page.back_to_main()
-
+# Add the HP_pro tablet
         self.Main_page.tablets()
         self.Tablets.hp_pro()
         self.HP_pro.color_gray()
@@ -68,13 +69,12 @@ class AOSProject(unittest.TestCase):
         self.Main_page.back_to_main()
         self.Main_page.cart()
         self.Main_page.back_to_main()
-
+# Add the HP_elite_x2 tablet
         self.Main_page.tablets()
         self.Tablets.hp_elite()
-        self.hp_ElitePad.color_black()
-        self.hp_ElitePad.quantity("1")
-        self.hp_ElitePad.add_to_cart()
-
+        self.HP_elite_x2.color_black()
+        self.HP_elite_x2.quantity("1")
+        self.HP_elite_x2.add_to_cart()
 
 
 
