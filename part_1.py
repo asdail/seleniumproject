@@ -54,7 +54,7 @@ class AOSProject(unittest.TestCase):
         self.hp_elite_x2 = HP_elite_x2(self.driver)
 
         self.main_page.tablets()
-        self.tablets.hp_eletepad()
+        self.tablets.hp_elitepad()
         self.hp_elitepad.color_black()
         self.hp_elitepad.quantity("2")
         self.hp_pro.add_to_cart()
@@ -76,7 +76,7 @@ class AOSProject(unittest.TestCase):
     def exercise_2(self):
 # Add the HP_ElitePad tablet
         self.main_page.tablets()
-        self.tablets.hp_eletepad()
+        self.tablets.hp_elitepad()
         self.hp_elitepad.color_blue()
         self.hp_elitepad.quantity("2")
         self.hp_elitepad.add_to_cart()

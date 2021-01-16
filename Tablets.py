@@ -9,7 +9,7 @@ class Tablets:
     def home(self):
             return self.driver.find_element_by_link_text('HOME')
 
-    def hp_eletepad(self):
+    def hp_elitepad(self):
         return self.driver.find_element_by_id("16").click()
 
     def hp_elite(self):
