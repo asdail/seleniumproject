@@ -27,6 +27,8 @@ class AOS (unittest.TestCase):
         self.hp_elite = HP_elite_x2(self.driver)
         self.general = All_pages(self.driver)
         self.cart = Cart(self.driver)
+        self.checkout = Checkout(self.driver)
+        self.createaccount = Create_an_account(self.driver)
 
         self.driver.implicitly_wait(10)
         self.driver.get('https://advantageonlineshopping.com/#/')
@@ -34,7 +36,7 @@ class AOS (unittest.TestCase):
         print('setUp')
 
     def tearDown(self):
-        self.driver = webdriver.Chrome(executable_path='C:\Selenium\chromedriver.exe')
+        self.general.back_to_main()
         self.driver.close()
         print('tearDown')
 
@@ -47,8 +49,8 @@ class AOS (unittest.TestCase):
         self.tablets.hp_elite()
         self.hp_elite.add_to_cart()
         self.general.cart()
-        time.sleep(7.0)
-        #WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/section/article/div[1]/table/tbody/tr[1]/td[6]/span/a[1]")))
+        popup_wait = WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, "/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart")))
+        popup_wait
         self.cart.edit_cart("1")
         self.hp_elite.quantity("2")
         self.hp_elite.add_to_cart()
@@ -57,10 +59,9 @@ class AOS (unittest.TestCase):
         self.hp_elitepad.quantity("2")
         self.hp_elitepad.add_to_cart()
         self.general.cart()
-        time.sleep(7.0)
+        popup_wait
         self.assertEqual(self.cart.qty_per_item('1'), '2')
         self.assertEqual(self.cart.qty_per_item('2'), '2')
-        self.general.back_to_main()
 
     def test_part_7(self):
         self.mainpage.tablets()
@@ -72,4 +73,36 @@ class AOS (unittest.TestCase):
         self.assertEqual(self.driver.current_url, "https://advantageonlineshopping.com/#/")
 
     def test_part_8(self):
-        pass
+        username = "Abc0001"
+        email = "test@test.com"
+        password = "Abc0001"
+        self.mainpage.tablets()
+        self.tablets.hp_elitepad()
+        self.hp_elitepad.add_to_cart()
+        self.general.cart()
+        self.cart.checkout()
+        self.checkout.new_account()
+        self.createaccount.username(username)
+        self.createaccount.email(email)
+        self.createaccount.password(password)
+        self.createaccount.confirm_password(password)
+        self.createaccount.general().send_keys(Keys.PAGE_DOWN)
+        self.createaccount.terms()
+        self.createaccount.register()
+        #self.checkout.username(username)
+        #self.checkout.password(password)
+        #self.checkout.login()
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[id=next_btn]")))
+        self.checkout.next_page()
+        self.checkout.payment_method_safepay()
+        self.checkout.safepay_username(username)
+        self.checkout.safepay_password(password)
+        self.checkout.pay_now()
+        order_number = self.driver.find_element_by_id("orderNumberLabel").text
+        self.assertEqual(self.driver.find_element_by_id("orderPaymentSuccess").text, "Thank you for buying with Advantage")
+        self.general.cart()
+        self.assertEqual(self.driver.find_element_by_id("shoppingCart").text, "Your shopping cart is empty")
+        self.general.user()
+        self.general.user_my_orders()
+        self.assertEqual(self.driver.find_element_by_xpath("/html/body/div[3]/section/article/div[2]/div/div/div[2]/div[1]/div[1]/label").text, order_number)
+

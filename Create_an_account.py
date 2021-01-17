@@ -9,8 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC
 class Create_an_account:
 
     def __init__(self, driver):
-        self.driver = webdriver.Chrome(executable_path='C:\Selenium\chromedriver.exe')
         self.driver = driver
+
+    def general(self):
+        return self.driver.find_element_by_css_selector("body")
 
     def username(self, input):
         return self.driver.find_element_by_name("usernameRegisterPage").send_keys(input)
@@ -22,9 +24,12 @@ class Create_an_account:
         return self.driver.find_element_by_name("passwordRegisterPage").send_keys(input)
 
     def confirm_password(self, input):
-        return self.driver.find_element_by_name("confirmpasswordRegisterPage").send_keys(input)
+        return self.driver.find_element_by_name("confirm_passwordRegisterPage").send_keys(input)
 
     def terms(self):
-        return Select(self.driver.find_element_by_name("i_agree"))
+        return self.driver.find_element_by_name("i_agree").click()
+
+    def register(self):
+        return self.driver.find_element_by_id("register_btnundefined").click()
 
 
