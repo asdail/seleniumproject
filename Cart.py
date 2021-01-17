@@ -1,3 +1,7 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class Cart:
     def __init__(self,driver):
@@ -5,6 +9,9 @@ class Cart:
 
     def navigation_line(self):
         return self.driver.find_element_by_xpath("//div/section/article/nav/a[2]").text
+
+    def wait_cart(self):
+        return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.XPATH,"//div/section/article/nav/a[2]")))
 
     def total_items_in_cart(self):
         return self.driver.find_element_by_css_selector("//div/section/article/h3/span").text

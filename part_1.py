@@ -198,3 +198,21 @@ class AOSProject(unittest.TestCase):
         self.hp_elite_x2.color_black()
         self.hp_elite_x2.quantity("1")
         self.hp_elite_x2.add_to_cart()
+        self.main_page.back_to_main()
+
+# Go to cart and check for details
+        self.main_page.cart()
+        cart_hp_pro_color = self.cart.color_of_the_item(3)
+        cart_hp_pro_qty = self.cart.qty_per_item(3)
+        cart_hp_pro_price = self.cart.price_per_item(3)
+
+        cart_hp_elite_x2_color = self.cart.color_of_the_item(2)
+        cart_hp_elite_pad_qty = self.cart.qty_per_item(2)
+        cart_hp_elite_pad_price = self.cart.price_per_item(2)
+
+        cart_hp_elite_x2_color = self.cart.color_of_the_item(1)
+        cart_hp_elite_x2_qty = self.cart.qty_per_item(1)
+        cart_hp_elite_x2_price = self.cart.price_per_item(1)
+
+#Go to checkout and do compere
+        self.cart.checkout()
