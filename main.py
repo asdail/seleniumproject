@@ -8,5 +8,5 @@ from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome(executable_path = 'C:\Selenium\chromedriver.exe')
 driver.implicitly_wait(10)
-driver.get('https://advantageonlineshopping.com/#/category/Tablets/3')
-driver.find_element_by_link_text('HOME').click()
+driver.get('https://advantageonlineshopping.com/#/orderPayment')
+print(driver.find_element_by_xpath("/html/body/div[3]/section/article/div[2]/div/h2/span/text()"))

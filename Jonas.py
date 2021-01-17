@@ -1,6 +1,5 @@
 import unittest
 from selenium import webdriver
-from Locators import Locators
 from Tablets import Tablets
 from main_page import Main_page
 from All_pages import All_pages
@@ -21,6 +20,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 class AOS (unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path='C:\Selenium\chromedriver.exe')
+        self.driver.get('https://advantageonlineshopping.com/#/')
         self.mainpage = Main_page(self.driver)
         self.tablets = Tablets(self.driver)
         self.hp_elitepad = hp_ElitePad(self.driver)
@@ -30,8 +30,7 @@ class AOS (unittest.TestCase):
         self.checkout = Checkout(self.driver)
         self.createaccount = Create_an_account(self.driver)
 
-        self.driver.implicitly_wait(10)
-        self.driver.get('https://advantageonlineshopping.com/#/')
+        self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         print('setUp')
 
@@ -73,9 +72,9 @@ class AOS (unittest.TestCase):
         self.assertEqual(self.driver.current_url, "https://advantageonlineshopping.com/#/")
 
     def test_part_8(self):
-        username = "Abc0001"
+        username = "Abc00015"
         email = "test@test.com"
-        password = "Abc0001"
+        password = "Abc00015"
         self.mainpage.tablets()
         self.tablets.hp_elitepad()
         self.hp_elitepad.add_to_cart()
@@ -89,9 +88,6 @@ class AOS (unittest.TestCase):
         self.createaccount.general().send_keys(Keys.PAGE_DOWN)
         self.createaccount.terms()
         self.createaccount.register()
-        #self.checkout.username(username)
-        #self.checkout.password(password)
-        #self.checkout.login()
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[id=next_btn]")))
         self.checkout.next_page()
         self.checkout.payment_method_safepay()
@@ -99,8 +95,9 @@ class AOS (unittest.TestCase):
         self.checkout.safepay_password(password)
         self.checkout.pay_now()
         order_number = self.driver.find_element_by_id("orderNumberLabel").text
-        self.assertEqual(self.driver.find_element_by_id("orderPaymentSuccess").text, "Thank you for buying with Advantage")
-        self.general.cart()
+        self.assertTrue(self.driver.find_element_by_xpath("//div[contains(.,'Thank you for buying with Advantage')]").text, "Thank you for buying with Advantage")
+        #self.general.cart()
+        time.sleep(5.0)
         self.assertEqual(self.driver.find_element_by_id("shoppingCart").text, "Your shopping cart is empty")
         self.general.user()
         self.general.user_my_orders()
