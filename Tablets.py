@@ -9,8 +9,14 @@ class Tablets:
     def __init__(self, driver):
         self.driver = driver
 
+
+
     def home(self):
         return self.driver.find_element_by_link_text('HOME')
+
+    def wait_tablets(self):
+        return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='16']")))
+
 
     def hp_elitepad(self):
         return self.driver.find_element_by_id("16").click()

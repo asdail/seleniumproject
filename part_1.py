@@ -22,7 +22,7 @@ class AOSProject(unittest.TestCase):
         self.body = self.driver.find_element_by_xpath("/html/body")
         self.wait = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
 
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(15)
 
         self.driver.get("https://www.advantageonlineshopping.com/#/")
         self.driver.maximize_window()
@@ -69,7 +69,7 @@ class AOSProject(unittest.TestCase):
     def test_exercise_2(self):
 # Add the HP_ElitePad tablet
         self.main_page.tablets()
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "img[id='16']")))
+        self.tablets.wait_tablets()
         self.tablets.hp_elitepad()
         self.hp_elitepad.color_blue()
         self.hp_elitepad.quantity("2")
@@ -77,7 +77,7 @@ class AOSProject(unittest.TestCase):
         self.main_page.back_to_main()
 # Add the HP_pro tablet
         self.main_page.tablets()
-        WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='17']")))
+        self.tablets.wait_tablets()
         self.tablets.hp_pro()
         self.hp_pro.color_gray()
         self.hp_pro.quantity("3")
@@ -87,6 +87,7 @@ class AOSProject(unittest.TestCase):
         self.main_page.back_to_main()
 # Add the HP_elite_x2 tablet
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_elite()
         self.hp_elite_x2.color_black()
         self.hp_elite_x2.quantity("1")
@@ -117,7 +118,7 @@ class AOSProject(unittest.TestCase):
     def test_exercise_3(self):
         # Add the new product for the cart
         self.main_page.tablets()
-        WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='16']")))
+        self.tablets.wait_tablets()
         self.tablets.hp_elitepad()
         self.hp_elitepad.color_blue()
         self.hp_elitepad.quantity("2")
@@ -126,7 +127,7 @@ class AOSProject(unittest.TestCase):
 
         # Add another product for the cart
         self.main_page.tablets()
-        WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='17']")))
+        self.tablets.wait_tablets()
         self.tablets.hp_pro()
         self.hp_pro.color_gray()
         self.hp_pro.quantity("3")
@@ -145,6 +146,7 @@ class AOSProject(unittest.TestCase):
     def test_exercise_4(self):
         # Add the new product for the cart
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_elitepad()
         self.hp_elitepad.color_blue()
         self.hp_elitepad.quantity("2")
@@ -153,6 +155,7 @@ class AOSProject(unittest.TestCase):
 
         # Add another product for the cart
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_pro()
         self.hp_pro.color_gray()
         self.hp_pro.quantity("3")
@@ -164,7 +167,7 @@ class AOSProject(unittest.TestCase):
 
         # Check If I'm in the right place
         navigation_line = self.cart.navigation_line()
-        self.assertIn("Shopping Cart",navigation_line)
+        self.assertEqual("SHOPPING CART",navigation_line)
 
 
     def test_exercise_5(self):
