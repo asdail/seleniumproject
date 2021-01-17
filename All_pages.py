@@ -12,6 +12,9 @@ class All_pages:
     def __init__(self,driver):
         self.driver = driver
 
+    def wait(self):
+        self.wait = WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "body > header >nav >div  >a")))
+
     def user(self):
         return self.driver.find_element_by_id("menuUserSVGPath").click()
 
@@ -52,7 +55,7 @@ class All_pages:
         return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/p").text
 
     def remove_item_from_cart(self,number_of_item_in_table):
-        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/div").click()
+        return self.driver.find_element_by_xpath(f"//table/tbody/tr[{number_of_item_in_table}]/td[3]/div/div").click()
 
     def total_items_in_cart(self):
         return self.driver.find_element_by_xpath('/html/body/header/nav/ul/li[2]/ul/li/tool-tip-cart/div/table/tfoot/tr[1]/td[1]/span/label').text
