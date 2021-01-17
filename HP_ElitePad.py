@@ -11,6 +11,7 @@ class hp_ElitePad:
         return self.driver.find_element_by_id('menuCart')
 
     def tablets(self):
+        self.WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"div[id='tabletsImg']")))
         return self.driver.find_element_by_link_text('TABLETS').click()
 
     def price(self):
