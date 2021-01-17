@@ -9,12 +9,11 @@ from HP_ELITE_X2 import *
 from Locators import Locators
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
+from Order_Payment import *
 
 class AOSProject(unittest.TestCase):
     def setUp(self):
@@ -35,6 +34,7 @@ class AOSProject(unittest.TestCase):
         self.hp_pro = HP_pro(self.driver)
         self.hp_elite_x2 = HP_elite_x2(self.driver)
         self.all_pages =All_pages(self.driver)
+        self.order_payment = Order_Payment(self.driver)
 
         print('setUp')
 
@@ -97,18 +97,21 @@ class AOSProject(unittest.TestCase):
 
 # Check the III item (HP_elite_x2 tablet)
         self.all_pages.cart_hovering()
+        self.assertIn("HP ELITE X2", self.all_pages.name_of_the_item("1"))
         self.assertIn("BLACK",self.all_pages.color_of_the_item("1"))
         self.assertIn("1",self.all_pages.qty_per_item("1"))
         self.assertIn("$1,279",self.all_pages.price_per_item("1"))
 
 # Check the II item (HP_pro tablet)
         self.all_pages.cart_hovering()
+        self.assertIn("HP PRO", self.all_pages.name_of_the_item("2"))
         self.assertIn("GRAY",self.all_pages.color_of_the_item("2"))
         self.assertIn("3",self.all_pages.qty_per_item("2"))
         self.assertIn("$1,437",self.all_pages.price_per_item("2"))
 
 # Check the I item (HP_ElitePad tablet)
         self.all_pages.cart_hovering()
+        self.assertIn("HP ELITEPAD 1000 G2",self.all_pages.name_of_the_item("3"))
         self.assertIn("BLUE",self.all_pages.color_of_the_item("3"))
         self.assertIn("2",self.all_pages.qty_per_item("3"))
         self.assertIn("$2,018",self.all_pages.price_per_item("3"))
@@ -202,17 +205,46 @@ class AOSProject(unittest.TestCase):
 
 # Go to cart and check for details
         self.main_page.cart()
-        cart_hp_pro_color = self.cart.color_of_the_item(3)
-        cart_hp_pro_qty = self.cart.qty_per_item(3)
-        cart_hp_pro_price = self.cart.price_per_item(3)
 
-        cart_hp_elite_x2_color = self.cart.color_of_the_item(2)
-        cart_hp_elite_pad_qty = self.cart.qty_per_item(2)
-        cart_hp_elite_pad_price = self.cart.price_per_item(2)
+# Check the I item (HP  Elite X2 tablet)
+        cart_hp_elite_x2_name = self.cart.name_of_the_item("1")
+        cart_hp_elite_x2_color = self.cart.color_of_the_item("1")
+        cart_hp_elite_x2_qty = self.cart.qty_per_item("1")
+        cart_hp_elite_x2_price = self.cart.price_per_item("1")
 
-        cart_hp_elite_x2_color = self.cart.color_of_the_item(1)
-        cart_hp_elite_x2_qty = self.cart.qty_per_item(1)
-        cart_hp_elite_x2_price = self.cart.price_per_item(1)
+# Check the II item (HP Pro tablet)
+        cart_hp_pro_name = self.cart.name_of_the_item("2")
+        cart_hp_pro_color = self.cart.color_of_the_item("2")
+        cart_hp_pro_qty = self.cart.qty_per_item("2")
+        cart_hp_pro_price = self.cart.price_per_item("2")
 
-#Go to checkout and do compere
+# Check the III item (HP ElitePad tablet)
+        cart_hp_elite_pad_name = self.cart.name_of_the_item("3")
+        cart_hp_elite_pad_color = self.cart.color_of_the_item("3")
+        cart_hp_elite_pad_qty = self.cart.qty_per_item("3")
+        cart_hp_elite_pad_price = self.cart.price_per_item("3")
+
+#Go to checkout and do compere tp the summary
+
         self.cart.checkout()
+
+        # Check the I item (HP  Elite X2 tablet)
+        summary_hp_elite_x2_name = self.cart.name_of_the_item("1")
+        summary_elite_x2_color = self.cart.color_of_the_item("1")
+        summary_elite_x2_qty = self.cart.qty_per_item("1")
+        summary_elite_x2_price = self.cart.price_per_item("1")
+
+        # Check the II item (HP Pro tablet)
+        summary_pro_name = self.cart.name_of_the_item("2")
+        summary_pro_color = self.cart.color_of_the_item("2")
+        summary_pro_qty = self.cart.qty_per_item("2")
+        summary_pro_price = self.cart.price_per_item("2")
+
+        # Check the III item (HP ElitePad tablet)
+        summary_elite_pad_name = self.cart.name_of_the_item("3")
+        summary_elite_pad_color = self.cart.color_of_the_item("3")
+        summary_elite_pad_qty = self.cart.qty_per_item("3")
+        summary_elite_pad_price = self.cart.price_per_item("3")
+
+### Do the compare beween the cart and the summary
+        self.assertIn(summary_pro_color,cart_hp_pro_color)

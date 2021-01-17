@@ -15,7 +15,7 @@ class Tablets:
         return self.driver.find_element_by_link_text('HOME')
 
     def wait_tablets(self):
-        return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='16']")))
+        return WebDriverWait(self.driver,20).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"img[id='16']")))
 
 
     def hp_elitepad(self):
