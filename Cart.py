@@ -26,16 +26,16 @@ class Cart:
         return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[4]/span").text
 
     def qty_per_item(self, index):
-        return self.driver.find_element_by_xpath(f'//html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[5]').text
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[5]/label[@class='ng-binding']").text
 
     def price_per_item(self,index):
         return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/p").text
 
     def remove_item_from_cart(self,index):
-        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[3]').click()
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/span/a[3]").click()
 
     def edit_cart(self, index):
-        return self.driver.find_element_by_xpath(f'/html/body/div[3]/section/article/div[1]/table/tbody/tr[{index}]/td[6]/span/a[1]').click()
+        return self.driver.find_element_by_xpath(f"//div[@id='shoppingCart']/table/tbody/tr[{index}]/td[6]/span/a[1]").click()
 
     def checkout(self):
         return self.driver.find_element_by_id("checkOutButton").click()
