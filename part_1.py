@@ -173,6 +173,7 @@ class AOSProject(unittest.TestCase):
     def test_exercise_5(self):
 # Add the HP_ElitePad tablet (I product)
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_elitepad()
         self.hp_elitepad.color_blue()
         self.hp_elitepad.quantity("2")
@@ -181,6 +182,7 @@ class AOSProject(unittest.TestCase):
 
 # Add the HP_pro tablet (II product)
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_pro()
         self.hp_pro.color_gray()
         self.hp_pro.quantity("3")
@@ -191,6 +193,7 @@ class AOSProject(unittest.TestCase):
 
 # Add the HP_elite_x2 tablet (III product)
         self.main_page.tablets()
+        self.tablets.wait_tablets()
         self.tablets.hp_elite()
         self.hp_elite_x2.color_black()
         self.hp_elite_x2.quantity("1")
