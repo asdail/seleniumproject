@@ -6,14 +6,13 @@ from All_pages import *
 from Cart import *
 from HP_ElitePad import *
 from HP_ELITE_X2 import *
-from Locators import Locators
+from Order_Payment import *
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Order_Payment import *
 
 class AOSProject(unittest.TestCase):
     def setUp(self):
@@ -39,7 +38,7 @@ class AOSProject(unittest.TestCase):
         print('setUp')
 
     def tearDown(self):
-        #self.driver.close()
+        self.driver.close()
 
         print('tearDown')
 
@@ -206,45 +205,82 @@ class AOSProject(unittest.TestCase):
 # Go to cart and check for details
         self.main_page.cart()
 
-# Check the I item (HP  Elite X2 tablet)
+# Create variables for the I item (HP  Elite X2 tablet) - in cart
         cart_hp_elite_x2_name = self.cart.name_of_the_item("1")
         cart_hp_elite_x2_color = self.cart.color_of_the_item("1")
         cart_hp_elite_x2_qty = self.cart.qty_per_item("1")
         cart_hp_elite_x2_price = self.cart.price_per_item("1")
 
-# Check the II item (HP Pro tablet)
+# Create variables for the II item (HP Pro tablet) - in cart
         cart_hp_pro_name = self.cart.name_of_the_item("2")
         cart_hp_pro_color = self.cart.color_of_the_item("2")
         cart_hp_pro_qty = self.cart.qty_per_item("2")
         cart_hp_pro_price = self.cart.price_per_item("2")
 
-# Check the III item (HP ElitePad tablet)
+#  Create variables for the III item (HP ElitePad tablet) - in cart
         cart_hp_elite_pad_name = self.cart.name_of_the_item("3")
         cart_hp_elite_pad_color = self.cart.color_of_the_item("3")
         cart_hp_elite_pad_qty = self.cart.qty_per_item("3")
         cart_hp_elite_pad_price = self.cart.price_per_item("3")
 
-#Go to checkout and do compere tp the summary
+# Total product and total for pay in the cart - new variables
+        cart_total_payment = self.cart.total_for_payment()
+        cart_total_products = self.cart.total_items_in_cart()
 
+#Go to checkout and create variables for the order summary
         self.cart.checkout()
 
-        # Check the I item (HP  Elite X2 tablet)
-        summary_hp_elite_x2_name = self.cart.name_of_the_item("1")
-        summary_elite_x2_color = self.cart.color_of_the_item("1")
-        summary_elite_x2_qty = self.cart.qty_per_item("1")
-        summary_elite_x2_price = self.cart.price_per_item("1")
+# Create variables for the I item (HP  Elite X2 tablet) - in order summary
+        summary_elite_x2_name = self.order_payment.name_of_the_item("1")
+        summary_elite_x2_color = self.order_payment.color_of_the_item("1")
+        summary_elite_x2_qty = self.order_payment.qty_per_item("1")
+        summary_elite_x2_price = self.order_payment.price_per_item("1")
 
-        # Check the II item (HP Pro tablet)
-        summary_pro_name = self.cart.name_of_the_item("2")
-        summary_pro_color = self.cart.color_of_the_item("2")
-        summary_pro_qty = self.cart.qty_per_item("2")
-        summary_pro_price = self.cart.price_per_item("2")
+# Create variables for the II item (HP Pro tablet) - in order summary
+        summary_pro_name = self.order_payment.name_of_the_item("2")
+        summary_pro_color = self.order_payment.color_of_the_item("2")
+        summary_pro_qty = self.order_payment.qty_per_item("2")
+        summary_pro_price = self.order_payment.price_per_item("2")
 
-        # Check the III item (HP ElitePad tablet)
-        summary_elite_pad_name = self.cart.name_of_the_item("3")
-        summary_elite_pad_color = self.cart.color_of_the_item("3")
-        summary_elite_pad_qty = self.cart.qty_per_item("3")
-        summary_elite_pad_price = self.cart.price_per_item("3")
+# Create variables for the II item (HP ElitePad tablet) on order summary
+        summary_elite_pad_name = self.order_payment.name_of_the_item("3")
+        summary_elite_pad_color = self.order_payment.color_of_the_item("3")
+        summary_elite_pad_qty = self.order_payment.qty_per_item("3")
+        summary_elite_pad_price = self.order_payment.price_per_item("3")
 
-### Do the compare beween the cart and the summary
-        self.assertIn(summary_pro_color,cart_hp_pro_color)
+# Total product and total for payment in order summary - new variables
+        summary_total_payment = self.order_payment.order_summary_total_payment()
+        summary_total_products = self.order_payment.order_summary_total_items()
+
+#Performs a comparison between products in the cart and the order summary
+#Comparison of HP pro
+        self.assertIn(summary_pro_name, cart_hp_pro_name)
+        self.assertIn(cart_hp_pro_qty, summary_pro_qty)
+        self.assertIn(summary_pro_price, cart_hp_pro_price)
+        print(f"The I product in your shopping cart is {cart_hp_pro_name} the quantity of the product is {cart_hp_pro_qty} "
+              f"and the total payment for the product is {cart_hp_pro_price}$")
+        print("----------------------------------------------------")
+
+#Comparison of HP ElitePad
+        self.assertIn(summary_elite_pad_name, cart_hp_elite_pad_name)
+        self.assertIn(cart_hp_elite_pad_qty, summary_elite_pad_qty)
+        self.assertIn(summary_elite_pad_price, cart_hp_elite_pad_price)
+        print(f"The I product in your shopping cart is {cart_hp_elite_pad_name} the quantity of the product is {cart_hp_elite_pad_qty} "
+              f"and the total payment for the product is {cart_hp_elite_pad_price}$")
+
+        print("----------------------------------------------------")
+#Comparison of HP ElitePad
+        self.assertIn(summary_elite_x2_name, cart_hp_elite_x2_name)
+        self.assertIn(cart_hp_elite_x2_qty, summary_elite_x2_qty)
+        self.assertIn(summary_elite_x2_price, cart_hp_elite_x2_price)
+        print(f"The I product in your shopping cart is {cart_hp_elite_x2_name} the quantity of the product is {cart_hp_elite_x2_qty} "
+              f"and the total payment for the product is {cart_hp_elite_x2_price}$")
+        print("----------------------------------------------------")
+
+# Performs a comparison between the total products and payment in the cart and the total in the order summary
+        self.assertIn(cart_total_products[1], summary_total_products)
+        self.assertIn(cart_total_payment, summary_total_payment)
+        print(f"Total products in cart is {cart_hp_pro_price}, and Total for payment is {cart_total_payment}")
+        print("----------------------------------------------------")
+        print(f"Total products in order summary is {summary_total_products}, and total for payment is {summary_total_payment}")
+
