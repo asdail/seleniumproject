@@ -1,7 +1,3 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-
 
 class hp_ElitePad:
     def __init__(self,driver):
@@ -10,6 +6,9 @@ class hp_ElitePad:
 #Check that you are in the right place = order payment
     def navigation_line(self):
         return self.driver.find_element_by_xpath("//div/nav/a[3]").text
+
+    def hp_elitepad_wait(self):
+        return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"span[title=BLUE]")))
 
     def cart(self):
         return self.driver.find_element_by_id('menuCart')
