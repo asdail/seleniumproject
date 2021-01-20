@@ -10,6 +10,7 @@ class Order_Payment:
     def navigation_line(self):
         return self.driver.find_element_by_css_selector("a[translate=ORDER_PAYMENT]").text
 
+# General wait for this page by general element in the page
     def wait_order(self):
         return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"a[translate=ORDER_PAYMENT]")))
 

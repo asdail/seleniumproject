@@ -28,7 +28,7 @@ class Checkout:
     def login(self):
         return self.driver.find_element_by_id("login_btnundefined").click()
 
-    # edit path
+# Click new page
     def next_page(self):
         return self.driver.find_element_by_css_selector("button[id=next_btn]").click()
 

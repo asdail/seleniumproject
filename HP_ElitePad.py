@@ -7,6 +7,7 @@ class hp_ElitePad:
     def navigation_line(self):
         return self.driver.find_element_by_xpath("//div/nav/a[3]").text
 
+# General wait for this page by general element in the page
     def hp_elitepad_wait(self):
         return WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"span[title=BLUE]")))
 
