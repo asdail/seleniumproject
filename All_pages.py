@@ -59,5 +59,14 @@ class All_pages:
     def checkout(self):
         return self.driver.find_element_by_id("checkOutPopUp").click()
 
+# Function that take string and back the string "clean" with only the numbers for a more accurate test
+    def only_numbers(self,string_1):
+        nums = ("0123456789")
+        only_nums = ""
+        for i in range(len(string_1)):
+            if string_1[i] in nums:
+                only_nums += string_1[i]
+        return only_nums
+
 
 

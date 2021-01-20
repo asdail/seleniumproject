@@ -251,6 +251,7 @@ class AOSProject(unittest.TestCase):
 # Total product and total for payment in order summary - new variables
         summary_total_payment = self.order_payment.order_summary_total_payment()
         summary_total_products = self.order_payment.order_summary_total_items()
+        #self.all_pages.only_numbers(self.order_payment.order_summary_total_items())
 
 #Performs a comparison between products in the cart and the order summary
 #Comparison of HP pro (name ,quantity and total price)
@@ -278,8 +279,8 @@ class AOSProject(unittest.TestCase):
         print("----------------------------------------------------")
 
 # Performs a comparison between the total products and payment in the cart and the total in the order summary
-        self.assertIn(cart_total_products[1], summary_total_products)
-        self.assertIn(cart_total_payment, summary_total_payment)
+        self.assertEqual(self.all_pages.only_numbers(cart_total_products),self.all_pages.only_numbers(summary_total_products))
+        self.assertEqual(self.all_pages.only_numbers(cart_total_payment),self.all_pages.only_numbers(summary_total_payment))
         print(f"Total products in cart is {cart_hp_pro_price}, and Total for payment is {cart_total_payment}")
         print("----------------------------------------------------")
         print(f"Total products in order summary is {summary_total_products}, and total for payment is {summary_total_payment}")
