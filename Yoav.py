@@ -15,7 +15,6 @@ from selenium.webdriver.support import expected_conditions as EC
 class AOSProject(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path=r"C:\selenium\chromedriver.exe")
-        self.body = self.driver.find_element_by_xpath("/html/body")
         self.wait = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
 
         self.driver.implicitly_wait(15)
