@@ -14,7 +14,19 @@ class All_pages:
 
 # Click on the user icon
     def user(self):
-        return self.driver.find_element_by_id("menuUserSVGPath").click()
+        return self.driver.find_element_by_id("menuUserLink").click()
+
+# Inputs text in the 'Username' field in the 'User' window.
+    def user_username(self, input):
+        return self.driver.find_element_by_name("username").send_keys(input)
+
+# Inputs text in the 'Password' field in the 'User' window.
+    def user_password(self, input):
+        return self.driver.find_element_by_name("password").send_keys(input)
+
+# Clicks on the 'Sign in' button.
+    def user_signin(self):
+        return  self.driver.find_element_by_id("sign_in_btnundefined").click()
 
 # click on my account in user
     def user_my_account(self):

@@ -58,6 +58,9 @@ class Checkout:
     def pay_now(self):
         return self.driver.find_element_by_id("pay_now_btn_SAFEPAY").click()
 
+    def pay_now_mastercredit(self):
+        return self.driver.find_element_by_id("pay_now_btn_ManualPayment").click()
+
     def order_succeed(self):
         return self.driver.find_element_by_css_selector("span[translate=Thank_you_for_buying_with_Advantage]").text()
 
